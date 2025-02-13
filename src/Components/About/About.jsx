@@ -15,7 +15,7 @@ import { FiTrendingUp } from "react-icons/fi";
 import "./aboutus.css";
 
 const AboutUs = () => {
-  // جلب بيانات الترجمة من الـ store
+  git 
   const { content } = useSelector((state) => state.lang);
 
   return (
