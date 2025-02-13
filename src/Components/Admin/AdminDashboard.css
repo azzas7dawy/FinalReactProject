@@ -1,0 +1,82 @@
+/* جعل الصفحة كاملة في المنتصف */
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+  }
+  
+  /* صندوق المحتوى الرئيسي */
+  .dashboard-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+  }
+  
+  /* عنوان الصفحة */
+  .dashboard-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* تنسيق الجدول */
+  .dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .dashboard-table th,
+  .dashboard-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* تنسيق الفيديو والصور */
+  .media-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .media-item {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  /* أزرار التعديل والحذف */
+  .edit-btn, .delete-btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .edit-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #a71d2a;
+  }
+  

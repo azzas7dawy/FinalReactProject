@@ -1,0 +1,76 @@
+/* aboutus.css */
+
+/* General styles */
+.container {
+    max-width: 80rem; /* 6xl in Tailwind */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  h2, h3 {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  h2 {
+    font-size: 2.25rem; /* 4xl in Tailwind */
+    margin-bottom: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem; /* 2xl in Tailwind */
+    margin-bottom: 1.5rem;
+  }
+  
+  p {
+    font-size: 1.125rem; /* text-lg in Tailwind */
+    text-align: center;
+    color: #4A5568; /* text-gray-600 in Tailwind */
+    margin-bottom: 3rem;
+  }
+  
+  /* Grid Layout */
+  .grid {
+    display: grid;
+    gap: 1.5rem; /* gap-6 in Tailwind */
+  }
+  
+  @media (min-width: 768px) {
+    .grid-md-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .card {
+    padding: 1.5rem;
+    border: 1px solid #E2E8F0; /* border in Tailwind */
+    border-radius: 0.5rem; /* rounded-lg in Tailwind */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md in Tailwind */
+  }
+  
+  .icon {
+    color: #F97316; /* text-orange-500 in Tailwind */
+    font-size: 2rem; /* text-3xl in Tailwind */
+    margin-bottom: 1rem;
+  }
+  
+  .button {
+    margin-top: 1rem;
+    background-color: #F97316; /* bg-orange-500 in Tailwind */
+    color: white;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem; /* rounded-lg in Tailwind */
+    font-weight: 600; /* font-semibold in Tailwind */
+  }
+  
+  .button:hover {
+    background-color: #F97316; /* hover:bg-orange-600 in Tailwind */
+  }
+  

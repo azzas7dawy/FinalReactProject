@@ -1,0 +1,144 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container Styling */
+  .pricing-container {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .pricing-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .pricing-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Toggle Button */
+  .toggle-container {
+    margin-bottom: 20px;
+  }
+  
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+  
+  .toggle-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Plans Section */
+  .plans-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .plan-card {
+    background: white;
+    width: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .plan-card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .plan-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+  }
+  
+  .plan-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 15px;
+  }
+  
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    text-align: start;
+  }
+  
+  .plan-feature {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Subscribe Button */
+  .subscribe-button {
+    margin-top: 20px;
+    background-color: #ff5722;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: 0.3s;
+  }
+  
+  .subscribe-button:hover {
+    background-color: #e64a19;
+  }
+  
+  /* FAQ Section */
+  .faq-container {
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+  
+  .faq-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
+  }
+  
+  .faq-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .faq-list li {
+    font-size: 1rem;
+    color: #444;
+    margin: 10px 0;
+  }
+  

@@ -1,0 +1,79 @@
+
+/*  ***********************Global style***********************  */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+
+    background-color: var(--mainBgColor) !important;
+    color: var(--mainColor) !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+/*  ***********************Navbar style***********************  */
+.nav-item:hover {
+  background-color: #ebe9e9;
+  border-radius: 7px;
+}
+
+.nav-link {
+  color: #000 !important;
+} 
+
+
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+
+
+.fa-graduation-cap:hover {
+  transform: scale(1.05);
+  transition: all 0.5s;
+
+}
+/* ***********************footer style*********************** */
+footer ul li a:hover{
+  color: #ff9500!important;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid #ff9500;
+
+}
+footer i:hover{
+  color: #ff9500 !important;
+  transition: color 0.3s ease;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.light {
+  --mainBgColor: #f7f7f8 !important;
+  --mainColor: #333 !important;
+}
+
+.dark {
+  --mainBgColor: #333 !important;
+  --mainColor: #ff9500 !important;
+}
