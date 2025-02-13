@@ -56,7 +56,7 @@ export default function AdminDashboard() {
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "20px" }}>
       <h1 style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}>Admin Dashboard</h1>
       <h4 style={{ fontSize: "16px", textAlign: "center", marginBottom: "20px" }} >
-        Welcome to the Admin Dashboard! Here, you can manage your course catalog, add new courses, and update existing ones.
+        Welcome to the Admin Dashboard! Here, you can add new courses, and update existing ones.
       
       </h4>
       <h5 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px", color: "black" }} onClick={() => Navigate("/UserShoppingCart")}>  Go To UserShoppingCart</h5>
