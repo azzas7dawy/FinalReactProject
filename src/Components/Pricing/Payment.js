@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import "./PaymentPage.css";
-import { CiTextAlignCenter } from "react-icons/ci";
-import { BsDisplay } from "react-icons/bs";
-import { CgDisplayFlex } from "react-icons/cg";
+// import { CiTextAlignCenter } from "react-icons/ci";
+// import { BsDisplay } from "react-icons/bs";
+// import { CgDisplayFlex } from "react-icons/cg";
 
 
 

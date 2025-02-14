@@ -27,7 +27,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg fixed-top bg-light">
         <div className="container-fluid px-3">
           <Link className="navbar-brand" to="/home">
             <i className="fa-solid fa-graduation-cap fs-1" style={{ color: '#ff9500' }}></i>
@@ -52,14 +52,14 @@ export default function Navbar() {
                   {content.home}
                 </Link>
               </li>
-              {/* <li className="nav-item px-2">
+              <li className="nav-item px-2">
                 <Link className="nav-link" to="/courses">
-                {content.courses}
+                  {content.courses}
                 </Link>
-              </li> */}
+              </li>
               <li className="nav-item px-2">
                 <Link className="nav-link" to="/about">
-                  {content.aboutUs}
+                  {content.About}
                 </Link>
               </li>
               <li className="nav-item px-2">
@@ -81,7 +81,7 @@ export default function Navbar() {
                
                <button className="btn btn-outline-warning py-2 ">
              <Link className="nav-link" to="/admin">
-               Admin <i className="fa-solid fa-crown"></i>
+               {content.admin} <i className="fa-solid fa-crown"></i>
              </Link></button>
           
          )}
@@ -102,29 +102,29 @@ export default function Navbar() {
 
             {user ? (
               <>
-                <button className="btn mx-2 px-3 text-light" style={{ backgroundColor: '#ff9500' }}>
+                <button className="btn mx-2 px-3 text-light border-1 border-warning" >
                   <Link className="nav-link text-info" to="/profile">
                     <i className="fa-solid fa-user"></i> 
-                  </Link>
+                  </Link> 
                 </button>
                 <button
                   className="btn mx-2 px-3"
                   style={{ border: '1px solid #ff9500' }}
                   onClick={handleLogout}
                 >
-                  Logout
+                  {content.logout}
                 </button>
               </>
             ) : (
               <>
                 <button className="btn mx-2 px-3" style={{ border: '1px solid #ff9500' }}>
                   <Link className="nav-link" to="/register">
-                    Sign Up
+                    {content.register}
                   </Link>
                 </button>
                 <button className="btn mx-2 px-3 text-light" style={{ backgroundColor: '#ff9500' }}>
                   <Link className="nav-link text-info" to="/login">
-                    Login
+                    {content.login}
                   </Link>
                 </button>
               </>
