@@ -15,10 +15,10 @@ const AdminShoppingCartPage = () => {
           {cart.map((course) => (
             <div key={course.id} className="col-md-4 col-lg-3 mb-4">
               <div className="card shadow-sm">
-                <img
-                  src={course.image || "https://via.placeholder.com/200"}
+                <video
+                  src={course.image || "https://youtu.be/VrVweQvzKeg?si=3Fs67hG37fBUcDkd"}
                   className="card-img-top"
-                  alt={course.name}
+                  alt={course.name || "https://youtu.be/VrVweQvzKeg?si=3Fs67hG37fBUcDkd"}
                   height="150px"
                 />
                 <div className="card-body">
