@@ -1,0 +1,91 @@
+
+.wishlist-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-course {
+    margin-bottom: 20px;
+  }
+  
+  .search-course input {
+    padding: 10px;
+    width: 70%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-course button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-course button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-results,
+  .wishlist {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .search-results h2,
+  .wishlist h2 {
+    margin-bottom: 10px;
+  }
+  
+  .search-results ul,
+  .wishlist ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .search-results li,
+  .wishlist li {
+    padding: 10px;
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-results li button,
+  .wishlist li button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-results li button:hover,
+  .wishlist li button:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .not-found-message {
+    color: #dc3545;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+  }
