@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { CartContext } from "../../Context/CartContext"; // تحقق من المسار الصحيح
+import { CartContext } from "../../Context/CartContext"; 
 
 const ShoppingCart = () => {
-  // إعطاء قيمة افتراضية لـ cart لتجنب قراءة undefined
+  
   const { cart = [] } = useContext(CartContext);
 
   return (
@@ -11,7 +11,7 @@ const ShoppingCart = () => {
       {cart.length > 0 ? (
         cart.map((item) => (
           <div key={item.id}>
-            <video src={item.image} alt={item.name || "https://youtu.be/Z2ZgGiAmaa4?si=yjVueKSiQd6Y7GZo"} />
+            <video src={item.image || item.video} alt={item.name || "https://youtu.be/Z2ZgGiAmaa4?si=yjVueKSiQd6Y7GZo"} />
             <h4>{item.name}</h4>
             <p>{item.price}</p>
           </div>
