@@ -80,7 +80,7 @@ export default function Navbar() {
             {isAdmin && (
                
                <button className="btn btn-outline-warning py-2 ">
-             <Link className="nav-link" to="/admin">
+             <Link className="nav-link" to="/admin_profile">
                Admin <i className="fa-solid fa-crown"></i>
              </Link></button>
           

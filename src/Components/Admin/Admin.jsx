@@ -59,7 +59,7 @@ export default function AdminDashboard() {
         Welcome to the Admin Dashboard! Here, you can add new courses, and update existing ones.
       
       </h4>
-      <h5 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px", color: "black" }} onClick={() => Navigate("/UserShoppingCart")}>  Go To UserShoppingCart</h5>
+     
 
       <div style={{ background: "#f9f9f9", padding: "20px", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)", width: "100%", maxWidth: "500px" }}>
         <input type="text" placeholder="Enter course name" value={newCourse} onChange={(e) => setNewCourse(e.target.value)} style={inputStyle} />
