@@ -159,18 +159,18 @@ const handleSubmit = async (e) => {
 
               <div className="py-3">
                 <label htmlFor="Full_Name" className="pb-2 fw-bolder">{content.fullName}</label>
-                <input type="text" name="Full_Name" className="py-3 form-control bg-light" id="Full_Name" placeholder="Enter your Full Name" onChange={handleChange} required />
+                <input type="text" name="Full_Name" className="py-3 form-control bg-light" id="Full_Name" placeholder="Enter your Full Name" onChange={handleChange}  />
               </div>
 
               <div>
                 <label htmlFor="Email" className="pb-2 fw-bolder">{content.email}</label>
-                <input type="email" name="Email" className="py-3 form-control bg-light" id="Email" placeholder="Enter your email" onChange={handleChange} required />
+                <input type="email" name="Email" className="py-3 form-control bg-light" id="Email" placeholder="Enter your email" onChange={handleChange}  />
               </div>
 
               <div className="py-3">
                 <label htmlFor="Password" className="pb-2 fw-bolder">{content.password}</label>
                 <div className="input-group">
-                  <input type={passwordVisible ? "text" : "password"} name="Password" className="py-3 form-control bg-light" id="Password" onChange={handleChange} placeholder="Enter your Password" required />
+                  <input type={passwordVisible ? "text" : "password"} name="Password" className="py-3 form-control bg-light" id="Password" onChange={handleChange} placeholder="Enter your Password"  />
                   <span className="input-group-text" onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
                     <i className={`fas ${passwordVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </span>
@@ -180,7 +180,7 @@ const handleSubmit = async (e) => {
               <div className="py-3">
                 <label htmlFor="Confirm_Password" className="pb-2 fw-bolder">{content.confirm}</label>
                 <div className="input-group">
-                  <input type={passwordVisible ? "text" : "password"} name="Confirm_Password" className="py-3 form-control bg-light" id="Confirm_Password" onChange={handleChange} placeholder="Confirm your Password" required />
+                  <input type={passwordVisible ? "text" : "password"} name="Confirm_Password" className="py-3 form-control bg-light" id="Confirm_Password" onChange={handleChange} placeholder="Confirm your Password"  />
                   <span className="input-group-text" onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
                     <i className={`fas ${passwordVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </span>

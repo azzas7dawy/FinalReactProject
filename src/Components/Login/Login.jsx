@@ -31,41 +31,121 @@ export default function Login() {
     setPasswordVisible(!passwordVisible);
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+  //   setError('');
+  //   if (!user.email || !user.password) {
+  //     setError('Please fill in all fields.');
+  //     setIsLoading(false);
+  //     return;
+  //   }
+
+  //   // Validate form inputs
+  //   const validationResult = validation();
+  //   if (validationResult.error) {
+  //     setError(validationResult.error.details[0].message);
+  //     setIsLoading(false);
+  //     return;
+  //   }
+
+  //   try {
+  //     // Sign in with Firebase Authentication
+  //     const userCredential = await signInWithEmailAndPassword(auth, user.email, user.password);
+  //     console.log("User signed in:", userCredential.user);
+
+  //     // Fetch user data from Firestore
+  //     const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+  //     if (userDoc.exists()) {
+  //       const userData = userDoc.data();
+  //       const isAdmin = userData.isAdmin || false;
+
+  //       // Update Redux store
+  //       dispatch(setAdmin(isAdmin));
+  //       dispatch(setUserr(userCredential.user));
+
+  //       Swal.fire({
+  //         icon: 'success',
+  //         title: 'Success',
+  //         text: `Welcome back, ${userCredential.user.displayName}!`,
+  //         timer: 1500,
+  //       });
+
+  //       navigate('/home'); // Redirect to home after successful login
+  //     } else {
+  //       setError('User data not found.');
+  //       Swal.fire({
+  //         icon: 'error',
+  //         title: 'Oops...',
+  //         text: 'User data not found.',
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error signing in:", error);
+  //     let errorMessage = 'An error occurred while logging in.';
+  //     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+  //       errorMessage = 'Invalid email or password.';
+  //     } else if (error.code === 'auth/too-many-requests') {
+  //       errorMessage = 'Too many failed attempts. Please try again later.';
+  //     }
+  //     setError(errorMessage);
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'Oops...',
+  //       text: errorMessage,
+  //     });
+  //   }
+
+  //   setIsLoading(false);
+  // };
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-
+  
     // Validate form inputs
     const validationResult = validation();
     if (validationResult.error) {
-      setError(validationResult.error.details[0].message);
+      const errorMessage = validationResult.error.details[0].message;
+  
+      // التحقق إذا كان الخطأ بسبب إدخال فارغ
+      if (errorMessage.includes('"email" is not allowed to be empty')) {
+        setError('⚠️ البريد الإلكتروني مطلوب!');
+      } else if (errorMessage.includes('"password" is not allowed to be empty')) {
+        setError('⚠️ كلمة المرور مطلوبة!');
+      } else {
+        setError(errorMessage);
+      }
+  
       setIsLoading(false);
       return;
     }
-
+  
     try {
       // Sign in with Firebase Authentication
       const userCredential = await signInWithEmailAndPassword(auth, user.email, user.password);
       console.log("User signed in:", userCredential.user);
-
+  
       // Fetch user data from Firestore
       const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
         const isAdmin = userData.isAdmin || false;
-
+  
         // Update Redux store
         dispatch(setAdmin(isAdmin));
         dispatch(setUserr(userCredential.user));
-
+  
         Swal.fire({
           icon: 'success',
           title: 'Success',
           text: `Welcome back, ${userCredential.user.displayName}!`,
           timer: 1500,
         });
-
+  
         navigate('/home'); // Redirect to home after successful login
       } else {
         setError('User data not found.');
@@ -90,10 +170,11 @@ export default function Login() {
         text: errorMessage,
       });
     }
-
+  
     setIsLoading(false);
   };
- const signUpWithGoogle = async () => {
+  
+  const signUpWithGoogle = async () => {
     try {
       await signInWithPopup(auth, provider);
       Swal.fire({
@@ -109,52 +190,14 @@ export default function Login() {
       setError('An error occurred during Google sign-in. Please try again.');
     }
   };
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, provider);
-  //     console.log("User Info:", result.user);
 
-  //     // Fetch user data from Firestore
-  //     const userDoc = await getDoc(doc(db, 'users', result.user.uid));
-  //     if (userDoc.exists()) {
-  //       const userData = userDoc.data();
-  //       const isAdmin = userData.isAdmin || false;
-
-  //       // Update Redux store
-  //       dispatch(setAdmin(isAdmin));
-  //       dispatch(setUserr(result.user));
-
-  //       Swal.fire({
-  //         icon: 'success',
-  //         title: 'Success',
-  //         text: `Welcome, ${result.user.displayName}! ✅`,
-  //       });
-
-  //       navigate('/home'); // Redirect to home after successful login
-  //     } else {
-  //       setError('User data not found.');
-  //       Swal.fire({
-  //         icon: 'error',
-  //         title: 'Oops...',
-  //         text: 'User data not found.',
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error("Error signing in with Google:", error);
-  //     Swal.fire({
-  //       icon: 'error',
-  //       title: 'Oops...',
-  //       text: 'Something went wrong with Google login. ❌',
-  //     });
-  //   }
-  // };
 
   const validation = () => {
     const schema = Joi.object({
       email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
         .required(),
-      password: Joi.string().min(6).required(), // Minimum 6 characters
+      password: Joi.string().min(6).required(), 
     });
     return schema.validate(user);
   };
@@ -182,7 +225,7 @@ export default function Login() {
                 placeholder="Enter your email"
                 value={user.email}
                 onChange={handleChange}
-                required
+                
               />
             </div>
 
@@ -197,7 +240,7 @@ export default function Login() {
                   placeholder="Enter your password"
                   value={user.password}
                   onChange={handleChange}
-                  required
+                  
                 />
                 <span
                   className="input-group-text"
