@@ -18,6 +18,8 @@ import PaymentPage from './Components/Pricing/Payment.js';
 import ShoppingCart from './Components/Home/ShoppingCart.jsx';
 import AdminShoppingCartPage from "./Components/Admin/AdminShoppingCart.jsx"; 
 import { CartProvider } from "./Context/CartContext.js";
+import AdminProfile from "./Components/Admin/AdminProfile.js";
+import Wishlist from "./Components/Home/wishlist.js";
 
 
 
@@ -67,15 +69,28 @@ const router = createBrowserRouter([{
   {
     // eslint-disable-next-line react/react-in-jsx-scope
     path: '*', element: <NotFound />
+
   },
   {
   // eslint-disable-next-line react/react-in-jsx-scope
   path:"/payment" ,element:<PaymentPage />
   }
+  ,
+  {
+    // eslint-disable-next-line react/react-in-jsx-scope
+    path: '/AdminProfile', element: <AdminProfile/>
+    
+  },
   ,  
   {
     // eslint-disable-next-line react/react-in-jsx-scope
     path:"/AdminShoppingCart" ,element:<AdminShoppingCartPage />
+    }
+    ,
+    ,  
+  {
+    // eslint-disable-next-line react/react-in-jsx-scope
+    path:"/wishlist" ,element:<Wishlist />
     }
     ,
   // { path:"/about", element:<AboutUs />

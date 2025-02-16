@@ -2,10 +2,20 @@
 import React, { createContext, useState } from "react";
 
 export const CartContext = createContext();
+ 
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
+  const [wishlist, setWishlist] = useState([]);
+  const toggleWishlist = (course) => {
+    setWishlist((prevWishlist) => {
+      if (prevWishlist.some((item) => item.id === course.id)) {
+        return prevWishlist.filter((item) => item.id !== course.id);
+      } else {
+        return [...prevWishlist, course];
+      }
+    });
+  };
   const addToCart = (course) => {
     setCart((prevCart) => {
       // إذا كان الكورس غير موجود في السلة، قم بإضافته
