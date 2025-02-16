@@ -15,7 +15,10 @@ import { FiTrendingUp } from "react-icons/fi";
 import "./aboutus.css";
 
 const AboutUs = () => {
+
  
+
+
   const { content } = useSelector((state) => state.lang);
 
   return (

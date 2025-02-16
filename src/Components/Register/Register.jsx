@@ -10,8 +10,11 @@ import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from '
 import { doc, setDoc } from 'firebase/firestore';
 import { useDispatch } from 'react-redux';
 import { setAdmin, setUserr } from '../Store/Store';
+import { useSelector } from 'react-redux';
 
 export default function Register() {
+
+  const content=useSelector((state) => state.lang.content);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false); 
@@ -27,72 +30,7 @@ export default function Register() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-// {  const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     if (!agreed) {
-//       Swal.fire({
-//         icon: 'warning',
-//         title: 'Oops...',
-//         text: 'You must agree to the terms and conditions.',
-//       });
-//       return;
-//     }
 
-//     if (isAdmin && secretNumber !== '55555') {
-//       Swal.fire({
-//         icon: 'error',
-//         title: 'Error',
-//         text: 'invalid secrete number.',
-//       });
-//       return;
-//     }
-
-//     setIsLoading(true);
-//     const validationResult = validation();
-//     if (!validationResult.error) {
-//       try {
-//         const userCredential = await createUserWithEmailAndPassword(auth, user.Email, user.Password);
-//         await updateProfile(userCredential.user, { displayName: user.Full_Name });
-
-//         // Store user data in Firestore
-//         await setDoc(doc(db, 'users', userCredential.user.uid), {
-//           fullName: user.Full_Name,
-//           email: user.Email,
-//           password: user.Password, // Store the password
-//           isAdmin: isAdmin,
-//         });
-
-//         Swal.fire({
-//           icon: 'success',
-//           title: 'Success',
-//           text: 'You registered successfully!',
-//           showConfirmButton: false,
-//           timer: 1500,
-//         }).then(() => {
-//           navigate('/login');
-//         });
-//       } catch (error) {
-//         // Handle Firebase errors
-//         switch (error.code) {
-//           case 'auth/email-already-in-use':
-//             setError('This email is already in use. Please use a different email.');
-//             break;
-//           case 'auth/weak-password':
-//             setError('Password should be at least 6 characters long.');
-//             break;
-//           case 'auth/invalid-email':
-//             setError('Invalid email address. Please enter a valid email.');
-//             break;
-//           default:
-//             setError('An error occurred during registration. Please try again.');
-//         }
-//       }
-//     } else {
-//       // Handle validation errors
-//       setError(validationResult.error.details[0].message);
-//     }
-//     setIsLoading(false);
-//   };}
 const handleSubmit = async (e) => {
   e.preventDefault();
   if (!agreed) {
@@ -139,7 +77,7 @@ const handleSubmit = async (e) => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        navigate('/AdminDashboard');
+        navigate('/home');
       });
     } catch (error) {
       // Handle Firebase errors
@@ -175,7 +113,7 @@ const handleSubmit = async (e) => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        navigate('/login');
+        navigate('/home');
       });
     } catch (error) {
       setError('An error occurred during Google sign-in. Please try again.');
@@ -210,29 +148,29 @@ const handleSubmit = async (e) => {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Register Page</title>
+        <title>{content.register}</title>
       </Helmet>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-6 bg-white mt-5 p-5 rounded-3 shadow-lg">
             <form onSubmit={handleSubmit}>
-              <h2 className="text-center">Sign Up</h2>
+              <h2 className="text-center">{content.signUp}</h2>
               <h5 className="text-center text-secondary">Create New Account</h5>
 
               <div className="py-3">
-                <label htmlFor="Full_Name" className="pb-2 fw-bolder">Full Name</label>
-                <input type="text" name="Full_Name" className="py-3 form-control bg-light" id="Full_Name" placeholder="Enter your Full Name" onChange={handleChange} required />
+                <label htmlFor="Full_Name" className="pb-2 fw-bolder">{content.fullName}</label>
+                <input type="text" name="Full_Name" className="py-3 form-control bg-light" id="Full_Name" placeholder="Enter your Full Name" onChange={handleChange}  />
               </div>
 
               <div>
-                <label htmlFor="Email" className="pb-2 fw-bolder">Email</label>
-                <input type="email" name="Email" className="py-3 form-control bg-light" id="Email" placeholder="Enter your email" onChange={handleChange} required />
+                <label htmlFor="Email" className="pb-2 fw-bolder">{content.email}</label>
+                <input type="email" name="Email" className="py-3 form-control bg-light" id="Email" placeholder="Enter your email" onChange={handleChange}  />
               </div>
 
               <div className="py-3">
-                <label htmlFor="Password" className="pb-2 fw-bolder">Password</label>
+                <label htmlFor="Password" className="pb-2 fw-bolder">{content.password}</label>
                 <div className="input-group">
-                  <input type={passwordVisible ? "text" : "password"} name="Password" className="py-3 form-control bg-light" id="Password" onChange={handleChange} placeholder="Enter your Password" required />
+                  <input type={passwordVisible ? "text" : "password"} name="Password" className="py-3 form-control bg-light" id="Password" onChange={handleChange} placeholder="Enter your Password"  />
                   <span className="input-group-text" onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
                     <i className={`fas ${passwordVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </span>
@@ -240,9 +178,9 @@ const handleSubmit = async (e) => {
               </div>
 
               <div className="py-3">
-                <label htmlFor="Confirm_Password" className="pb-2 fw-bolder">Confirm Password</label>
+                <label htmlFor="Confirm_Password" className="pb-2 fw-bolder">{content.confirm}</label>
                 <div className="input-group">
-                  <input type={passwordVisible ? "text" : "password"} name="Confirm_Password" className="py-3 form-control bg-light" id="Confirm_Password" onChange={handleChange} placeholder="Confirm your Password" required />
+                  <input type={passwordVisible ? "text" : "password"} name="Confirm_Password" className="py-3 form-control bg-light" id="Confirm_Password" onChange={handleChange} placeholder="Confirm your Password"  />
                   <span className="input-group-text" onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
                     <i className={`fas ${passwordVisible ? 'fa-eye' : 'fa-eye-slash'}`}></i>
                   </span>
@@ -253,12 +191,12 @@ const handleSubmit = async (e) => {
               <div className="form-check py-2">
                 <input className="form-check-input" type="checkbox" id="isAdminCheck" onChange={(e) => setIsAdmin(e.target.checked)} />
                 <label className="form-check-label" htmlFor="isAdminCheck">
-                  Register as Admin
+                  {content.registerAsAdmin}
                 </label>
               </div>
               {isAdmin && (
                 <div className="py-3">
-                  <label htmlFor="SecretNumber" className="pb-2 fw-bolder">Admin Secret Number</label>
+                  <label htmlFor="SecretNumber" className="pb-2 fw-bolder">{content.adminSecretNumber}</label>
                   <input type="text" name="SecretNumber" className="py-3 form-control bg-light" id="SecretNumber" placeholder="Enter secret number" onChange={(e) => setSecretNumber(e.target.value)} required />
                 </div>
               )}
@@ -275,7 +213,7 @@ const handleSubmit = async (e) => {
               <div className="form-check py-2">
                 <input className="form-check-input" type="checkbox" id="flexCheckIndeterminate" onChange={(e) => setAgreed(e.target.checked)} />
                 <label className="form-check-label" htmlFor="flexCheckIndeterminate">
-                  I agree to the terms and conditions
+                  {content.ageeTerms}
                 </label>
               </div>
 
@@ -285,7 +223,7 @@ const handleSubmit = async (e) => {
 
               <button type="button" className={`btn ${style.btnSign} form-control py-3 mt-3`} onClick={signUpWithGoogle}>
                 <img src={img} width="30" height="30" alt="Google Logo" className="me-2" />
-                Sign Up With Google
+               {content.signUpWithGoogle}
               </button>
 
-              <p className="text-center mt-3"> Already have an account? <Link to="/login" className="text-dark fw-bold">Login</Link> </p> </form> </div> </div> </div> </> ); }
+              <p className="text-center mt-3"> {content.alreadyAccount} <Link to="/login" className="text-dark fw-bold">{content.login}</Link> </p> </form> </div> </div> </div> </> ); }

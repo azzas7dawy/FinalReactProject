@@ -1,8 +1,14 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import en from '../../Locals/en';
 import ar from '../../Locals/ar';
-import arNavBar from '../../Locals/arNavBar';
-import enNavBar from '../../Locals/enNaBar';
+// import cartReducer from './cartSlice';
+// import coursesReducer from "./coursesSlice";
+
+import { loadState, saveState } from '../utils/localStorage'; // Import the utility functions
+
+
+// Load persisted state from localStorage
+const persistedState = loadState();
 
 // Language Slice
 const langSlice = createSlice({
@@ -75,14 +81,23 @@ export const { toggleTheme } = themeSlice.actions;
 export const { addToFavorites, removeFromFavorites } = favoriteSlice.actions;
 export const { setAdmin, setUserr, logout } = authSlice.actions;
 
+
 // Configure the store
 const store = configureStore({
   reducer: {
     lang: langSlice.reducer,
     theme: themeSlice.reducer,
     favorite: favoriteSlice.reducer,
-    auth: authSlice.reducer, // Add the auth slice here
+    auth: authSlice.reducer,
+    // cart: cartReducer,
+    // courses: coursesReducer,
   },
+  preloadedState: persistedState, // Initialize the store with the persisted state
+});
+
+// Save the state to localStorage whenever it changes
+store.subscribe(() => {
+  saveState(store.getState());
 });
 
 export default store;
