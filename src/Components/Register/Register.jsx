@@ -77,7 +77,12 @@ const handleSubmit = async (e) => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        navigate('/home');
+
+        if (isAdmin) {
+          navigate('/AdminDashboard');
+        }
+        else{
+        navigate('/home');}
       });
     } catch (error) {
       // Handle Firebase errors

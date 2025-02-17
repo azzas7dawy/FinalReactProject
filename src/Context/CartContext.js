@@ -8,7 +8,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (course) => {
     setCart((prevCart) => {
-      // إذا كان الكورس غير موجود في السلة، قم بإضافته
+     
       if (!prevCart.some((item) => item.id === course.id)) {
         return [...prevCart, course];
       }

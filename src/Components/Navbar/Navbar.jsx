@@ -105,7 +105,7 @@ export default function Navbar() {
             {user ? (
               <>
                 <button className="btn mx-2 px-3 text-light border-1 border-warning" >
-                  <Link className="nav-link text-info" to="/profile">
+                  <Link className="nav-link text-info" to="/AdminDashboard">
                     <i className="fa-solid fa-user"></i> 
                   </Link> 
                 </button>
