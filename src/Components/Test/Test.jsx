@@ -11,6 +11,9 @@ import {
 } from "react-icons/fa";
 import {ShoppingCart} from "../Home/ShoppingCart.jsx";
 import { CartContext } from "../../Context/CartContext.js";
+import {useDispatch, useSelector} from "react-redux";
+import { addToCart,addToFavorites } from "../Store/Store.jsx";
+
 
 
 const Courses = () => {
@@ -21,6 +24,9 @@ const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user =useSelector((state)=>state.auth.user);
+
   const coursesPerPage = 9;
 
  
@@ -49,6 +55,11 @@ const Courses = () => {
 
   
   const toggleWishlist = (course) => {
+    if(!user){
+      alert("يجب تسجيل الدخول لإضافة المنتج إلى قائمة الرغبات.");
+      navigate("/login");
+      return;
+    }
     if (wishlist.some((item) => item.id === course.id)) {
       setWishlist(wishlist.filter((item) => item.id !== course.id));
     } else {
@@ -57,6 +68,11 @@ const Courses = () => {
   };
 
   const toggleCart = (course) => {
+    if(!user){
+      alert("يجب تسجيل الدخول لإضافة المنتج إلى قائمة الرغبات.");
+      navigate("/login");
+      return;
+    }
     if (cart.some((item) => item.id === course.id)) {
       removeFromCart(course.id);
     } else {

@@ -46,10 +46,40 @@ const favoriteSlice = createSlice({
   },
   reducers: {
     addToFavorites: (state, action) => {
-      state.favorite.push(action.payload);
+      if (!action.payload.user) {
+        alert("يجب تسجيل الدخول أولًا لإضافة المنتج إلى المفضلة.");
+        return;
+      }
+      state.favorite.push(action.payload.product);
     },
     removeFromFavorites: (state, action) => {
       state.favorite = state.favorite.filter((item) => item.id !== action.payload.id);
+    },
+  },
+});
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: {
+    cartItems: [],
+  },
+  reducers: {
+    addToCart: (state, action) => {
+      if (!action.payload.user) {
+        alert("يجب تسجيل الدخول لإضافة المنتج إلى عربة التسوق.");
+        return;
+      }
+      const existingItem = state.cartItems.find(item => item.id === action.payload.product.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.cartItems.push({ ...action.payload.product, quantity: 1 });
+      }
+    },
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(item => item.id !== action.payload.id);
+    },
+    clearCart: (state) => {
+      state.cartItems = [];
     },
   },
 });
@@ -80,6 +110,7 @@ export const { toggleLang } = langSlice.actions;
 export const { toggleTheme } = themeSlice.actions;
 export const { addToFavorites, removeFromFavorites } = favoriteSlice.actions;
 export const { setAdmin, setUserr, logout } = authSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 
 
 // Configure the store
@@ -89,7 +120,7 @@ const store = configureStore({
     theme: themeSlice.reducer,
     favorite: favoriteSlice.reducer,
     auth: authSlice.reducer,
-    // cart: cartReducer,
+    cart: cartSlice.reducer,
     // courses: coursesReducer,
   },
   preloadedState: persistedState, // Initialize the store with the persisted state
