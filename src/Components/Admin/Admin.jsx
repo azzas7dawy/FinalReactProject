@@ -100,10 +100,12 @@ function AdminDashboard() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "100vh", padding: "20px" }}>
-      <h1>Admin Dashboard</h1>
-      {/* <button onClick={() => navigate("/UserShoppingCart")} style={buttonStyle}>Go To UserShoppingCart</button> */}
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}>Admin Dashboard</h1>
+      <h4 style={{ fontSize: "16px", textAlign: "center", marginBottom: "20px" }} >
+        Welcome to the Admin Dashboard! Here, you can add new courses, and update existing ones.
       
-      <input type="text" placeholder="Search courses" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} style={inputStyle} />
+      </h4>
+     
 
       <div style={formStyle}>
         <h3>Add Course</h3>

@@ -11,6 +11,10 @@ import Courses from './Components/Courses/Courses';
 import About from './Components/About/About';
 import Pricing from './Components/Pricing/PricingPage.js';
 import NotFound from './Components/NotFound/NotFound.jsx';
+import Testimonials from './Components/Testimonial/Testimonial';
+import Faq from './Components/Faq/Faq.jsx';
+import OurGoals from './Components/About/OurGoals.jsx';
+
 
 import AdminDashboard from './Components/Admin/Admin.jsx';
 import CourseSection from './Components/Home/opencourse';
@@ -18,61 +22,66 @@ import PaymentPage from './Components/Pricing/Payment.js';
 import ShoppingCart from './Components/Home/ShoppingCart.jsx';
 import AdminShoppingCartPage from "./Components/Admin/AdminShoppingCart.jsx"; 
 import { CartProvider } from "./Context/CartContext.js";
-import AdminProfile from "./Components/Admin/AdminProfile.js";
-import Wishlist from "./Components/Home/wishlist.js";
 
+import AdminProfile from './Components/Admin/admin_profile';
 
 
 
 const router = createBrowserRouter([{
-  // eslint-disable-next-line react/react-in-jsx-scope
+
   path: '/', element: <Layout />, children: [{
-     // eslint-disable-next-line react/react-in-jsx-scope
+   
      index: true, element: <Home />
   },
     {
 
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/home', element: <Home />
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/contact', element: <Contact />
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/login', element: <Login />
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/AdminDashboard', element: <AdminDashboard />
 
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/register', element: <Register />
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/about', element: <About />
   }, {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/courses', element: <Courses />
   },
   {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/ShoppingCart', element: <ShoppingCart/>
   },
   {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '/opencourse', element: <CourseSection/>
   },
   {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path:'/pricing',element:<Pricing/>
+  } ,{
+    path:'/testimonials',element:<Testimonials/>
+  }  ,{
+    path:'/faq',element:<Faq/>
+  },{
+    path:'/goals',element:<OurGoals/>
   } ,
   {
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     path: '*', element: <NotFound />
 
   },
   {
-  // eslint-disable-next-line react/react-in-jsx-scope
+
   path:"/payment" ,element:<PaymentPage />
   }
   ,
@@ -83,16 +92,16 @@ const router = createBrowserRouter([{
   },
   ,  
   {
-    // eslint-disable-next-line react/react-in-jsx-scope
-    path:"/AdminShoppingCart" ,element:<AdminShoppingCartPage />
+
+    path:"/AdminShopping" ,element:<AdminShoppingCartPage />
+
     }
     ,
-    ,  
-  {
-    // eslint-disable-next-line react/react-in-jsx-scope
-    path:"/wishlist" ,element:<Wishlist />
-    }
-    ,
+    {
+     
+      path:"/admin_profile" ,element:<AdminProfile />
+      }
+      ,
   // { path:"/about", element:<AboutUs />
 
   //     }
@@ -100,16 +109,19 @@ const router = createBrowserRouter([{
 
 }])
 
+
+
+
 function App() {
   return (
   
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
     <CartProvider>
         
         <RouterProvider router={router} />
 </CartProvider>
    
-    // eslint-disable-next-line react/react-in-jsx-scope
+  
   
 
   );

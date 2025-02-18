@@ -1,8 +1,11 @@
+
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaPlay, FaHeart, FaRegHeart, FaCartPlus, FaShoppingCart, FaBookmark } from "react-icons/fa";
 import { CartContext } from "../../Context/CartContext.js";
+import { useSelector} from "react-redux";
+import Swal from 'sweetalert2';
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -11,6 +14,7 @@ const Courses = () => {
   const [wishlist, setWishlist] = useState([]);
 
   const navigate = useNavigate();
+  const user =useSelector((state)=>state.auth.user);
   const coursesPerPage = 9;
 
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
@@ -37,6 +41,17 @@ const Courses = () => {
   };
 
   const toggleWishlist = (course) => {
+    if(!user){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'You must log in to add to favorites.',
+      }).then(() => {
+        navigate("/login");
+      })
+      
+      return;
+    }
     if (wishlist.some((item) => item.id === course.id)) {
       setWishlist(wishlist.filter((item) => item.id !== course.id));
     } else {
@@ -45,6 +60,17 @@ const Courses = () => {
   };
 
   const toggleCart = (course) => {
+    if(!user){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'You must log in to add to wishlist.',
+      }).then(()=>{
+        navigate("/login");
+
+      })
+      return;
+    }
     if (cart.some((item) => item.id === course.id)) {
       removeFromCart(course.id);
     } else {
