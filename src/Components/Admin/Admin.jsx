@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const API_URL = "https://api-generator.retool.com/fJ5ysN/courses";
 
 function AdminDashboard() {
@@ -72,9 +72,20 @@ function AdminDashboard() {
   };
 
   const deleteCourse = async () => {
-    await axios.delete(`${API_URL}/${confirmDelete}`);
+    Swal.fire({
+      icon: 'warning',  
+      title: 'Are you sure?',
+      text: 'You will not be able to revert this!',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(async () => {
+        await axios.delete(`${API_URL}/${confirmDelete}`);
     setConfirmDelete(null); 
     fetchCourses();
+    })
+  
   };
 
   const startEditing = (course) => {
