@@ -49,8 +49,16 @@ const Courses = () => {
       }).then(() => {
         navigate("/login");
       })
+     
       
       return;
+    }
+    else{
+      Swal.fire({
+        icon: 'success',
+        title: 'you added successfully',
+        text: 'its added to your favorites',
+      })
     }
     if (wishlist.some((item) => item.id === course.id)) {
       setWishlist(wishlist.filter((item) => item.id !== course.id));
@@ -70,6 +78,13 @@ const Courses = () => {
 
       })
       return;
+    }
+    else{
+      Swal.fire({
+        icon: 'success',
+        title: 'you added successfully',
+        text: 'its added to your Cart',
+      })
     }
     if (cart.some((item) => item.id === course.id)) {
       removeFromCart(course.id);
